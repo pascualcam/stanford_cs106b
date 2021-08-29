@@ -1,0 +1,45 @@
+Before submitting this file, make sure that there are no more TODO
+placeholders remaining in the file (and remove this comment too).
+
+Warmup
+------
+Q1. What is the value of `totalMoves` after stepping over the call to `moveTower` in `hanoiAnimation`?
+A1. 15 moves
+
+Q2. What is the value of the `totalMoves` variable after stepping over the first recursive sub-call? (In other words, within `moveTower` just after stepping over the first recursive sub-call to `moveTower` inside the `else` statement.)
+A2. 7 moves
+
+Q3. After breaking at the base case of `moveTower` and then choosing Step Out, where do you end up? (What function are you in, and at what line number?) What is the value of the `totalMoves` variable at this point?
+A3. After stepping out from the base case we go again to the `moveTower` function but in a different level. This time we end up
+    in the first line of the recursive case (else case, line 67) and the variable totalMoves is equal to 1.
+
+Q4. What is the smallest possible input that you used to trigger the bug in the program?
+A4. The smallest possible input to trigger the bug is a vector with one element inside of it.
+
+Q5. Identify the one-character error in the code and explain why that one-character bug causes the function to return the output you see when running on the minimal input you listed above. You should be able to specifically account for how the error causes the result to change from “completely correct” to “terribly wrong.”
+A5. The bug occurs because when you call the `buggyCount` function in line 43 (the first recursive call) it reassigns the sumSoFar
+    variable, so by the time you get to line 44 (the second recursive call) the variable sumSoFar has an incorrect value.
+
+Voting
+------
+Q1. Part of the power of algorithms and metrics is that they simplify problems, making them representable in data and computationally tractable.  However, it is important to analyze the mathematical tools you use in their social contexts to determine when an algorithm or metric has simplified a problem too much. Efficiency gap is a useful starting place in identifying gerrymandering, but if used alone it could be a flawed metric. Can you do some online research and identify one potential flaw of the efficiency gap as a metric?  What additional data would you need to gather in order to more accurately determine if gerrymandering had taken place in a district?
+A1. One of the main shortcomings of the EG metric is that it boils down a very complex problem down to a simple vote relationship which can oversimplify the problem
+    and lose sight of other factors. The efficiency gap algorithm works best on somewhat evenly distributed elections. It is theoretically possible for an election where
+    an overwhelming majority of voters leaning on one side to be labelled as gerrymandered even if the results are perfectly distributed. Additional criteria such as 
+    compactness measure of a district's shape(ratio of the district's area to the area of a circle with the same perimeter).
+
+Q2. You just wrote software that can identify historical evidence of gerrymandering.  How could you use this tool to advocate on the behalf of people disenfranchised by gerrymandering?
+A2. Having software tools capable of identifying gerrymandering in a given region could serve activism to promote fair practices during the gerrymandering process, 
+    with the goal of fairly representing those who live in that region. The tool could be used as argument when trying to ensure a fair process, for instance, as evidence 
+    that the process should be updated.
+
+Q3. You just wrote code that identifies maps that can be gerrymandered.  Given that you wrote it, what is your responsibility for how this code is or could be used?  
+A3. The program should clearly state the assumptions and limitations to the user, for transparency to both the user and others that may encounter the results obtained 
+    from this tool. In addition, providing additional helpful information computed by the tool on the entire district, for instance, a profile with metrics that help 
+    the user better understand the implications. An example would be to provide statistics comparing how many scenarios could lead to unfair gerrymandering as proportion 
+    of all the possibilities.
+
+Q4. You are asked by a political party to work on some new cutting edge software that applies fast algorithms and new techniques to optimize gerrymandering during the process of district remapping. How would you handle the situation?
+A4. I would decline such a request from any institution approaching with political interests as I would not feel confident with providing my work for such goals. 
+    On the other hand, if the institution approaching me were to be a non-partisan organization I would commit to working with them to develop a fair tool that 
+    would ensure proper representation.
