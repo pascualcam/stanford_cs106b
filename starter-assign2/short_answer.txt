@@ -1,0 +1,61 @@
+Before submitting this file, make sure that there are no more TODO
+placeholders remaining in the file (and remove this comment too).
+
+Warmup
+------
+Q1. The display of the Stack in the debugger uses the labels `top` and `bottom` to mark the two ends of the stack. How are the contents labeled when the Stack contains only one element?
+A1: bottom/top
+
+Q2. For which type of inputs does the function produce a correct result?
+A2: When the function does not add any values to the queue (ie, inputs with no negative values).
+
+Q3. For which type of inputs does the function go into an infinite loop?
+A3: Those that contain negative values (see Q4).
+
+Q4. What is the bug within `duplicateNegatives` that causes it to get stuck in an infinite loop?
+A4: The bug is that the size of the queue changes every iteration, and i is always smaller than a growing q.size().
+
+Q5. What is the value of the variables (as reported in the debugger variable pane) right before the program crashes? What happens if you try to step over the line where the program crashes?
+A5: The keys in the map are Jan, Margaret and Thomas, with values Jan, Meg, Tom, respectively. The program removes the key for Jan (and the associated value). The program crashes when trying to do the second iteration in the for loop.
+
+Maze
+-------
+Q6. So far in this class, we've passed our data structures by reference. Why do you think `checkSolution` passes `path` by value instead of by reference?
+A6: Because we don't want to change the path, instead, we just want to check if it is a solution.
+
+Q7. After you have written your tests, describe your testing strategy to determine that your checkSolution works as intended.
+A7: I checked extreme scenarios, as using a path out of bounds, a diagonal to get from the entry to the exit, a reverse solution (from end to entry), and finally a maze with no paths, just walls.
+
+Search Engine
+-------------
+Q8: Draw out the inverted index for the `res/tiny.txt` database file.
+A8: 	red: rainbow.org, dr.seuss.net
+	blue: rainbow.org, dr.seuss.net
+	fish: shoppinglist.com, dr.seuss.net
+	eggs: shoppinglist.com
+	milk: shoppinglist.com
+	cheese: shoppinglist.com
+	bread: shoppinglist.com
+	green: rainbow.org
+	orange: rainbow.org
+	yellow: rainbow.org
+	indigo: rainbow.org
+	violate: rainbow.org
+	i'm: bigbadwolf.com
+	not: bigbadwolf.com
+	trying: bigbadwolf.com
+	to: bigbadwolf.com
+	eat: bigbadwolf.com
+	you: bigbadwolf.com
+
+Beyond Algorithmic Analysis
+---------------------------
+Q9: In a short paragraph, describe a real or plausible scenario not previously presented in lecture in which using techniques like Big-O or Asymptotic Analysis to improve the performance of an algorithm might benefit the environment. Include your thoughts on how a software engineer working on this piece of code might identify such potential benefits and take them into consideration when designing the code.
+A9: TODO
+
+Q10: According to the contract that IBM struck with the state of Indiana, the criteria for optimization were improving efficiency of the overall welfare system and reducing fraud. Criteria for reducing wait times and wrongful denials were not included.  However, wrongfully denying benefits has a huge negative  impact on the citizens who rely on the system.  If criteria like minimizing wrongful denials were not included in the contract, should engineers have included them in their optimization algorithm?  Why or why not?
+A10: I believe that engineers should think holistically when coming up with solutions. Although the contract did not explicitly mentioned this, it would be illogical to imagine that this was not in the best interest of the people.
+
+Q11: Imagine that after completing CS106B you are hired at IBM as an engineer working on this system. How might you have approached designing and setting the goals of this system?  How might you apply algorithmic analysis tools to build a system that achieved  the desired goals? Could you do so in a way that avoids the severe negative impacts on users of the system that are outlined in the case study?
+A11: I think the most important thing would be to set up metrics that assessed multiple parameters, which would include costs, times, some metric of the quality for service, and of course, the number of people served. This metrics would allow engineers and IBM as a whole to assess their program's performance while keeping in mind the interests of both parties. At a minimum, IBM should have informed of the outcomes of the program as they were happening. Finally, algorithm analysis tools could have been implemented to "measure" these metrics and provide some sense of how the system was serving the client.
+

@@ -1,0 +1,95 @@
+Warmup
+---------------------------
+Pair programming:
+
+Gonzalo Aguilar - gonzaloa
+Pascual Camacho - ecam
+---------------------------
+
+Q1. Looking at a call stack listing in a debugger, what is the indication that the program being debugged uses recursion?
+A1. That the same function appears in multiple adjacent stack frames, i.e. the function keeps calling itself in a recursive way.
+
+Q2. What is the value of parameter `n` at the innermost level (Level 0 or Level 1, depending on your system)?  What is the highest numbered level shown in the call stack? (you may have to drag the column divider to enlarge the column width to fit all the digits) The range between the two gives an estimate of the capacity of the call stack on your system.
+A2. The value of parameter n at level 1 is -43273. The highest numbered level shown in the call stack is 20. 
+
+Q3. Describe how the symptoms of infinite recursion differ from the symptoms of an infinite loop.
+A3. I would say that the main difference is the way the program crashes. An infinite recursion seems to generate a more catastrophic crash,
+    compared to an infinite loop. It seems that Qt Creator is capable of identifying an infinite loop with ease but it struggles to identify
+    an infinite recursion. Also, Qt Creator never crashed for me when I came up with infinite loops but it definitely crashed with an infinite
+    recursion
+
+Q4. What are the specific values of base/exp that result in a test failure?
+A4. The recursive exponent function results in a test failure for exponent = -1
+
+Q5. Of the four base cases, which do you think are redundant and can be removed from the function? Which do you think are absolutely necessary? Are there any base cases that you're unsure about?
+A5. I think that the exponent = 1 and exponent = -1, cases are redundant and can be removed from the recursive power function. All the other cases are absolutely necessary.
+
+Q6. First explain why those cases were redundant/unnecessary and then explain why removing them fixed the test failure. (Hint: Consider the types of the values in play here and think about what happens when you do division with integers.)
+A6. Those two cases are redundant because there are already other if statements that "catch" negative and positive exponents.
+    The exponent = -1 case fails because when C++ computes 1/base it returns an integer and we need a number with decimal points,
+    i.e. a double. Removing this case fixes the problem because for every other negative case it returns a double. Another way to
+    solve this case is to simply change it to 1.0/base to force C++ to return a double, although, as previously mentioned this case
+    is redundant and can be removed altogether.
+
+Q7. What is the result of attempting to compute 0 raised to a negative power without a special case for base == 0?
+A7. It passes the test, i.e. it returns 0, however if we remove this case it would fail the special case 0^0.
+
+Balanced
+--------
+
+Q8. Compare your recursive solution to the iterative approach used for the Check Balance problem in [Section 1][section1]. Which version do you find easier to read and understand? In which version did you find it easier to confirm the correct behavior?
+A8. Although I was able to follow through the code for both functions, it was hard at first to read the checkBalance function and get a good sense of what the function was doing. It was much easier to understand the recursive function operatorsAreMatched because of basically having 2 cases to understand. Again, because of the concise code, it was quite simple to test the function operatorsAreMatched, as there were less steps to keep track, although conceptually it took some time to fully digest recursion, with this problem being really helpful in achieving that understanding. 
+
+Merge
+-----
+
+Q9. Give a rough estimate of the maximum length sequence that could be successfully merged on your system assuming a recursive implementation of binary merge.
+A9. As discussed in Question 2, the call stack capacity is 43273.
+
+Q10. What would be the observed behavior if attempting to recursively merge a sequence larger than that maximum?
+A10. The program would encounter a catastrophic crash.
+
+Q11. Include the data from your execution timing and explain how is supports your Big O prediction for binary `merge`.
+A11. The prediction for Big O for the binary merge operation is that it is a linear function, or O(n). The data is as follows:
+	(size =1500000) completed in    1.534 secs
+	(size =3000000) completed in    2.977 secs
+	(size =4500000) completed in    4.182 secs
+
+	Here it is clear that increasing size linearly by 1500000 to 3000000 and then to 4500000, the time increase is approximately 1.5s,
+	3.0s, and 4.2, respectively; thus, linear behavior.
+
+Q12. Include the data from your execution timing and explain how it supports your Big O prediction for `multiMerge`.
+A12. The prediction for multiMerge is that Big O is a quadratic function, or O(n^2), which the data proves:
+	
+	(size =  11000) completed in     3.39 secs
+	(size =  22000) completed in   11.412 secs
+	(size =  33000) completed in   24.178 secs
+
+	By doubling the size from 11000 to 22000, the operation time increases from ~3.4s to 11.4s, roughly squaring it. 
+	
+	
+Q13. Include the data from your execution timing and explain how it supports the `O(n log k)` runtime prediction for recMultiMerge.
+A13. The prediction for recMultiMerge, the recursive version, is that Big O will be O(n log k), which is clear from the data collected:
+
+	(size =  90000) completed in    1.206 secs
+	(size = 180000) completed in    2.728 secs
+	(size = 270000) completed in    4.018 secs
+
+	By conducting a quick inspection of the operation time after doubling the values at each step, it is a clear logarithmic behavior.
+	For instance, log(2) ~= 0.3, log(4) ~= 0.6, log(6) ~= 0.8, which is a similar behavior to the data shown above. 
+
+Q14. Earlier you worked out how a recursive implementation of `merge` would limit the allowable input sequence length. Are the limits on the call stack also an issue for the recursive implementation of `recMultiMerge`? Explain why or why not.
+A14. No, the limit on the call stack from Q9 is not an issue in this case, as the call stack limit is never reached in this function.
+
+/***** Time of operation comparisons *****/
+
+Varying n:
+	multiMerge 	(size =  16000) completed in    6.379 secs
+						     	vs
+    	recMultiMerge 	(size =  16000) completed in    0.175 secs
+
+Varying k:
+	multiMerge 	(size =   4000) completed in    1.666 secs
+							vs
+	recMultiMerge 	(size =   4000) completed in    0.113 secs
+
