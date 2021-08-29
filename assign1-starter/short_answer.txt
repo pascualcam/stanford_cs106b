@@ -1,0 +1,63 @@
+Before submitting this file, make sure that there are no more TODO
+placeholders remaining in the file (and remove this comment too).
+
+Perfect Numbers
+---------------
+
+Q1. How many numbers does the program search through? How many perfect numbers does it find? What are these perfect numbers?
+A1: The program searches through 4000 numbers, finding 4 in the process, which are: 6, 28, 496, and 8128.
+
+Q2. Record the timing results for `findPerfects` into a table.
+A2: 
+Search Size: 20000  Runtime: 0.876
+Search Size: 40000  Runtime: 2.987
+Search Size: 80000  Runtime: 11.389
+Search Size: 160000 Runtime: 44.838
+Search Size: 320000 Runtime: 178.403
+Search Size: 640000 Runtime: 711.754
+
+Q3. Does it take the same amount of effort to compute `isPerfect` on the number 10 as it does on the number 1000? Why or why not? Does it take the same amount of work for `findPerfects` to search the range of numbers from 1-1000 as it does to search the numbers from 1000-2000? Why or why not?
+A3: No, the computing time for isPerfect(10) = 0.127s versus isPerfect(1000) = 0211s. Although the increase from 10-1000 (2 orders of magnitude) is much larger than the proportional increase in time (less than double), the algorithm is still "efficient". For findPerfects(1000), the time to compute is 0.225s, while findPerfects(2000) it is 0.2s. This was actually surprising, which indicates that it takes less time for operation with 2000.
+
+Q4. Extrapolate from the data you gathered and make a prediction: how long will it take `findPerfects` to reach the fifth perfect number?
+A4: After plotting, it seems like 3000 seconds to find the next number, or about 50 minutes.
+
+Q5. Do any of the tests still pass even with this broken function? Why or why not?
+A5: Yes, two tests on line 105 do pass the test to check if they are NOT perfect numbers. Changing the initial value of total to 1 messes up the sum of the divisors.
+
+Q6. Can the test framework detect that the test case is "bogus", in the sense that the premise of the test case itself is off-base?
+A6: No, a the test framework simply tests what it is given, while a good test should be written to PASS the function, thus, to test an error, the test should be implemented in a way that it passes, to discard the error.
+
+Q7. Describe the testing strategy your used for your test cases to confirm `smarterSum` is working correctly.
+A7: To ensure that my function was robust, I tested 4 different numbers: a positive, a negative, a very large number and a decimal number.
+
+Q8. Record your timing results for `findPerfectsSmarter` into a table.
+A8: 
+Search Size: 20000  Runtime: 0.061
+Search Size: 40000  Runtime: 0.304
+Search Size: 80000  Runtime: 0.488
+Search Size: 160000 Runtime: 1.059
+Search Size: 320000 Runtime: 2.468
+Search Size: 640000 Runtime: 5.653
+Search Size: 1280000 Runtime: 13.483
+
+Q9. Make a prediction: how long will `findPerfectsSmarter` take to reach the fifth perfect number?
+A9: About 5 minutes
+
+Q10. Explain how you chose your specific test cases and why they lead you to be confident `findNthPerfectEuclid` is working correctly.
+A10:
+
+
+Soundex
+-------
+
+Q11. What is the Soundex code for "Angelou"? What is the code for your own surname?
+A11: Angelou -> A524; Camacho -> C520
+
+Q12. Before writing any code, brainstorm your plan of attack and sketch how you might decompose the work into smaller tasks. Briefly describe your decomposition strategy.
+A12: My subtasks are as follows: 1-convert the input to only digits. 2-format the digits. 3-then call 1&2 to create the soundex code.
+
+Q13. Think about one or more examples of a class of names that the Soundex system might not work well for. Explain what this class of names is and why the system might incorrectly group them or mis-categorize one of the names.
+A13: I am originally from Mexico, and in most hispanic cultures, two last names are assigned: the traditional last name + the maiden name (mother's). When I moved to the US, my last name suddenly became a hyphenated combination of these two, which wrongly categorizes my name.
+
+A14: This is a matter of misrepresentation, which for multiple reasons, is not good for anyone. Although it carries more work to adapt a piece of software, the correct decision should be to update it so that an effective work can be performed, which is representative of every human being residing in a given geographical location.
